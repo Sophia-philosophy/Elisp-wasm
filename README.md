@@ -12,8 +12,18 @@ Why not just have an API to emacs running on a back-end?
     Code generation: Once the program has been verified to be semantically correct, the compiler generates the target code, in this case wasm. This typically involves mapping the elisp code to the corresponding wasm instructions, and creating a binary file that can be executed by a wasm runtime.
 
     Optimization: The final stage is to optimize the generated code for better performance. This can include techniques like constant folding, instruction scheduling, and register allocation.
+    
+    In addition to these core components, a toolchain might also include:
+
+    A linker, which is used to combine multiple object files into a single executable.
+    A debugger, which is used to help locate and fix errors in the compiler.
+    A library of utility functions, which can be used throughout the compiler for tasks such as error handling or memory management.
+    
+    
 
 * Challenges
+
+
     Homoiconicity: Elisp is a homoiconic language, meaning that code and data have the same representation. This makes it difficult to distinguish between the two when translating to wasm, which has a more rigid distinction between code and data.
 
     Garbage collection: Elisp uses a garbage collector to automatically manage memory, while wasm requires manual memory management. This would require the compiler to insert appropriate wasm instructions to handle memory management.
@@ -22,4 +32,7 @@ Why not just have an API to emacs running on a back-end?
 
     Elisp runtime environment : Elisp code is executed in a runtime environment provided by an Elisp interpreter, which provides a number of built-in functions and data structures that are not available in a wasm runtime. This would require the compiler to provide equivalents for these in wasm or provide a way to access them.
 
-    Limited support for elisp in wasm: Currently, there is limited support for elisp in wasm, and it may not be possible to use existing tools or libraries to assist in building the compiler. This would require the development of a new toolchain specifically for the task.
+    Limited support for elisp in wasm: Currently, there is limited support for elisp in wasm, and it may not be possible to use existing tools or libraries to assist in building the compiler. This would require the development of a new toolchain specifically for the task. 
+    
+
+    
